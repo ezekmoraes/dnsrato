@@ -26,13 +26,15 @@ int main(int argc, char *argv[])
 	}
 
 	while(fscanf(rato, "%s", &txt) != EOF)
-		{
+	{
 		result = (char *) strcat(txt,alvo);
 		host=gethostbyname(result);
 		if(host == NULL)
-		{	
-		continue;
-		}
+	{	
+		break;
+	}
 		printf("HOST ENCONTRADO: %s ====> IP: %s \n", result, inet_ntoa(*((struct in_addr *)host->h_addr)));
-		}
+	}
+	
+	return false;
 }
